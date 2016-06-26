@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var AllergySchema = require('./allergy');
+
 
 var MenuItemSchema = new Schema({
   name: String,

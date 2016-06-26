@@ -16,6 +16,8 @@ mongoose.connect('mongodb://krsjoseph:krsjoseph@ds021984.mlab.com:21984/ciet'); 
 
 var Menu_Item = require('./app/models/menu_item');
 var Allergy = require('./app/models/allergy');
+var User = require('./app/models/user');
+
 
 var router = express.Router(); // get an instance of the express Router
 
@@ -42,6 +44,7 @@ router.route('/menu_items')
 
   var menu_item = new Menu_Item();
   menu_item.name = req.body.name;
+
 
   menu_item.save(function(err) {
     if (err)
@@ -131,6 +134,36 @@ router.route('/allergies')
           res.send(err);
 
         res.json(allergies);
+      });
+    });
+
+
+
+//User Routes
+router.route('/users')
+
+    .post(function(req, res) {
+
+      var user = new User();
+      user.name = req.body.name;
+      user.email = req.body.email;
+
+      user.save(function(err) {
+        if (err)
+          res.send(err);
+
+        res.json({
+          message: 'User created!'
+        });
+      });
+    })
+
+    .get(function(req, res) {
+      User.find(function(err, users) {
+        if (err)
+          res.send(err);
+
+        res.json(users);
       });
     });
 
