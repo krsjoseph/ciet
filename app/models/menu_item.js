@@ -6,7 +6,7 @@ var MenuItemSchema = new Schema({
   description: String,
   ingredients: Array,
   imageUrl: String,
-  allergy: Array
+  allergy: [AllergySchema]
 });
 
 module.exports = mongoose.model('Menu_Item', MenuItemSchema);
