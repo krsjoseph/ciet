@@ -22,6 +22,15 @@ var User = require('./app/models/user');
 var router = express.Router(); // get an instance of the express Router
 
 
+var config = {
+  "secrets" : {
+    "clientId" : "CLIENT_ID",
+    "clientSecret" : "CLIENT_SECRET",
+    "redirectUrl" : "REDIRECT_URL"
+  }
+}
+
+
 router.use(function(req, res, next) {
   // do logging
   console.log('Something is happening. This can be good or bad');
